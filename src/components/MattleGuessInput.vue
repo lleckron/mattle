@@ -97,7 +97,7 @@ export default ({
     position: relative;
     text-align: center;
     margin: 15px 0 0 0;
-    min-width: 600px;
+    min-width: 500px;
 }
 
 #guess-input {
@@ -191,5 +191,16 @@ export default ({
 .president-name {
     margin: 0;
     padding-top: 25px;
+}
+
+@media only screen and (max-width: 550px) {
+
+	.guess-div {
+        min-width: 300px;
+    }
+
+    #guess-input {
+        min-width: 250px;
+    }
 }
 </style>

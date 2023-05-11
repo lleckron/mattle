@@ -1,4 +1,5 @@
-# mattle
+# Mattle
+### This is a game for guessing Presidents, using the clues from previous guesses to find the correct answer.
 
 ## Project setup
 ```

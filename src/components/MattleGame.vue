@@ -1,10 +1,21 @@
 <template>
 
     <div class="mattle-container">
+
         <MattleGuessInput :availableAnswersList="presidentsList" @submit="processGuess"/>
+
         <div class="answers-container">
+
             <MattleCategories />
+
+            <div class="guess-container">
+                <TransitionGroup name="fade" mode="out-in">
+                    <GuessRow v-for="guess in guessedPresidents" :key="guess" :guessedPresident="guess" :answerPresident="answerPresident"/>
+                </TransitionGroup>
+            </div>
+
         </div>
+
     </div>
 
 
@@ -14,14 +25,14 @@
 import { createPresidents } from '@/models/PresidentList.js'
 import MattleGuessInput from '@/components/MattleGuessInput.vue'
 import MattleCategories from './MattleCategories.vue'
-//import GuessRow from '@/components/GuessRow.vue'
+import GuessRow from '@/components/GuessRow.vue'
 
 export default {
     name: 'MattleGame',
     components: {
         MattleGuessInput,
         MattleCategories,
-        //GuessRow
+        GuessRow
     },
     data() {
         return {
@@ -64,18 +75,24 @@ export default {
         overflow-y: auto;
     }
 
+    .guess-container {
+        display: flex;
+        flex-direction: column-reverse;
+        max-width: 840px;
+    }
+
     ::-webkit-scrollbar {
         width: 10px;
     }
-    
+
     ::-webkit-scrollbar-track {
         background: #f1f1f1; 
     }
-    
+
     ::-webkit-scrollbar-thumb {
         background: #888; 
     }
-    
+
     ::-webkit-scrollbar-thumb:hover {
         background: #555; 
     }

@@ -62,7 +62,7 @@ html {
 	font-family: 'Kanit', sans-serif;
 	background-size: 400% 400%;
 	background-image: linear-gradient(-45deg,#95eccc,#ffffff,#888888,#f0f0f0);
-	animation: gradient 5s linear infinite;
+	animation: gradient 15s linear infinite;
 }
 
 .description-container {
@@ -142,6 +142,18 @@ html {
 	100% {
 		scale: 1;
 	}
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 100%;
+	}
+	50% {
+		background-position: 100% 10%;
+	}
+	100% {
+		background-position: 0% 100%;
+	}	
 }
 
 .fade-out-enter-active,

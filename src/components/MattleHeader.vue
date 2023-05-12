@@ -28,7 +28,7 @@ export default {
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;  
-    animation: title-animation 35s linear infinite;
+    animation: title-animation 135s linear infinite;
 }
 
 @keyframes title-animation {

@@ -34,11 +34,12 @@ export default {
     flex-direction: row;
     position: relative;
     margin-top: 25px;
+    max-width: 840px;
 }
 
 .guess-category {
     display: flex;
-    margin: 10px 20px 0 0;
+    margin: 10px 21px 0 0;
     width: 120px;
     min-height: 30px;
     max-height: 60px;
@@ -76,58 +77,20 @@ export default {
     }
 }
 
-@media only screen and (min-width: 400px) and (max-width: 550px) {
+@media only screen and (min-width: 321px) and (max-width: 550px) {
 
     .category-container {
-        left: 45px;
+        left: 100px;
     }
 
     .guess-category {
-        margin: 10px 10px 0 0;
-        width: 70px;
+        margin: 10px 14px 0 0;
+        width: 80px;
         height: 60px;
     }
 
     .guess-category p {
-        width: 70px;
-        min-height: 30px;
-        max-height: 60px;
-        font-size: 14px;
-    }
-}
-
-@media only screen and (min-width: 350px) and (max-width: 400px) {
-    .category-container {
-        left: 70px;
-    }
-
-    .guess-category {
-        margin: 10px 10px 0 0;
-        width: 70px;
-        height: 60px;
-    }
-
-    .guess-category p {
-        width: 70px;
-        min-height: 30px;
-        max-height: 60px;
-        font-size: 14px;
-    }
-}
-
-@media only screen and (min-width: 321px) and (max-width: 350px) {
-    .category-container {
-        left: 110px;
-    }
-
-    .guess-category {
-        margin: 10px 10px 0 0;
-        width: 70px;
-        height: 60px;
-    }
-
-    .guess-category p {
-        width: 70px;
+        width: 80px;
         min-height: 30px;
         max-height: 60px;
         font-size: 14px;
@@ -136,11 +99,11 @@ export default {
 
 @media only screen and (max-width: 321px) {
     .category-container {
-        left: 100px;
+        left: 150px;
     }
 
     .guess-category {
-        margin: 10px 10px 0 0;
+        margin: 10px 14px 0 0;
         width: 70px;
         height: 60px;
     }

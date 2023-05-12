@@ -193,7 +193,21 @@ export default ({
     padding-top: 25px;
 }
 
-@media only screen and (max-width: 550px) {
+@media only screen and (min-width: 550px) and (max-width: 800px){
+    .guess-div {
+        min-width: 300px;
+    }
+
+    #guess-input {
+        min-width: 250px;
+    }
+
+    .president-select-menu {
+        width: 340px;
+    }
+}
+
+@media only screen and (min-width: 350px) and (max-width: 550px) {
 
 	.guess-div {
         min-width: 300px;
@@ -201,6 +215,24 @@ export default ({
 
     #guess-input {
         min-width: 250px;
+    }
+
+    .president-select-menu {
+        width: 340px;
+    }
+}
+
+@media only screen and (max-width: 350px) {
+    .guess-div {
+        min-width: 175px;
+    }
+
+    #guess-input {
+        min-width: 175px;
+    }
+
+    .president-select-menu {
+        width: 240px;
     }
 }
 </style>

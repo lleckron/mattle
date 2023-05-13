@@ -2,7 +2,7 @@
 
 	<MattleHeader />
 
-	<TransitionGroup name="fade-out" mode="in-out">
+	<TransitionGroup name="exit">
 
 		<div v-if="topicClicked === false" class="description-container">
 			<p class="description">Guess world leaders throughout History</p>
@@ -16,7 +16,7 @@
 
 	</TransitionGroup>
 
-	<Transition name="fade-in" mode="out-in">
+	<Transition name="enter">
 		<MattleGame v-if="topicClicked === true"/>
 	</Transition>
 
@@ -156,23 +156,23 @@ html {
 	}	
 }
 
-.fade-out-enter-active,
-.fade-out-leave-active {
+.exit-enter-active,
+.exit-leave-active {
 	transition: opacity 0.4s ease-out;
 }
 
-.fade-out-enter-from,
-.fade-out-leave-to {
+.exit-enter-from,
+.exit-leave-to {
 	opacity: 0;
 }
 
-.fade-in-enter-active,
-.fade-in-leave-active {
+.enter-enter-active,
+.enter-leave-active {
 	transition: opacity 2s ease-in;
 }
 
-.fade-in-enter-from,
-.fade-in-leave-to {
+.enter-enter-from,
+.enter-leave-to {
 	opacity: 0;
 }
 

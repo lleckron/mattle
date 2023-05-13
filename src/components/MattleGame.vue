@@ -9,7 +9,7 @@
             <MattleCategories />
 
             <div class="guess-container">
-                <TransitionGroup name="fade" mode="out-in">
+                <TransitionGroup name="fade-in">
                     <GuessRow v-for="guess in guessedPresidents" :key="guess" :guessedPresident="guess" :answerPresident="answerPresident"/>
                 </TransitionGroup>
             </div>
@@ -66,42 +66,52 @@ export default {
 
 <style scoped>
 
+.answers-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 300px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.guess-container {
+    display: flex;
+    flex-direction: column-reverse;
+    max-width: 840px;
+}
+
+.fade-in-enter-active,
+.fade-in-leave-active {
+	transition: opacity .25s ease-in;
+}
+
+.fade-in-enter-from,
+.fade-in-leave-to {
+	opacity: 0;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888; 
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+}
+
+@media only screen and (max-width: 550px) {
+
     .answers-container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        min-height: 300px;
-        overflow-x: hidden;
-        overflow-y: auto;
+        overflow-x: auto;
     }
 
-    .guess-container {
-        display: flex;
-        flex-direction: column-reverse;
-        max-width: 840px;
-    }
-
-    ::-webkit-scrollbar {
-        width: 10px;
-    }
-
-    ::-webkit-scrollbar-track {
-        background: #f1f1f1; 
-    }
-
-    ::-webkit-scrollbar-thumb {
-        background: #888; 
-    }
-
-    ::-webkit-scrollbar-thumb:hover {
-        background: #555; 
-    }
-
-    @media only screen and (max-width: 550px) {
-
-        .answers-container {
-            overflow-x: auto;
-        }
-
-    }
+}
 </style>

@@ -1,8 +1,8 @@
 <template>
     <div class="guess-row">
-        <div class="guess-square">
-            <img :src="require(`@/assets/presidents/${guessedPresident.image}`)" />
-        </div>
+            <div class="guess-square">
+                <img :src="require(`@/assets/presidents/${guessedPresident.image}`)" />
+            </div>
         <div :class="'guess-square name ' + nameStyle">
             <p>{{guessedPresident.name}}</p>
         </div>
@@ -49,8 +49,14 @@ export default {
         checkYear() {
             if(this.answerPresident.birthYear == this.guessedPresident.birthYear) {
                 this.birthYearStyle = "correct"
-            } else if((this.guessedPresident.birthYear >= this.answerPresident.birthYear - 15) && (this.guessedPresident.birthYear <= this.answerPresident.birthYear + 15)) {
-                this.birthYearStyle = "similar"
+            } else if((this.guessedPresident.birthYear >= this.answerPresident.birthYear - 25) && (this.guessedPresident.birthYear <= this.answerPresident.birthYear + 25)) {
+
+                if(this.guessedPresident.birthYear > this.answerPresident.birthYear) {
+                    this.birthYearStyle = "similar-lower"
+                } else {
+                    this.birthYearStyle = "similar-higher"
+                }
+
             }else {
                 this.birthYearStyle = "incorrect"
             }
@@ -170,8 +176,18 @@ export default {
     background: #d44a2f;
 }
 
-.guess-square.similar {
-    background: #e2e23a;
+.guess-square.similar-higher {
+    background: #e2e23a url('../assets/arrow-up.png') no-repeat;
+    background-size: 110%;
+    background-position-x: 50%;
+    background-position-y: 50%;
+}
+
+.guess-square.similar-lower {
+    background: #e2e23a url('../assets/arrow-down.png') no-repeat;
+    background-size: 110%;
+    background-position-x: 75%;
+    background-position-y: 50%;
 }
 
 .guess-square.similar p {

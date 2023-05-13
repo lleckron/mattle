@@ -57,7 +57,7 @@ export default {
     white-space: pre-line;
 }
 
-@media only screen and (min-width: 550px) and (max-width: 800px){
+@media only screen and (min-width: 550px) and (max-width: 820px){
 
     .category-container {
         left: 15px;

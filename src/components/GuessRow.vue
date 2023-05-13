@@ -194,7 +194,7 @@ export default {
     text-shadow: 1px 2px 3px #000000;
 }
 
-@media only screen and (min-width: 550px) and (max-width: 800px){
+@media only screen and (min-width: 550px) and (max-width: 820px){
 
     .guess-row {
         left: 12px;

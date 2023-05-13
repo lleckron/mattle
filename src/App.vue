@@ -17,24 +17,30 @@
 	</TransitionGroup>
 
 	<Transition name="enter">
-		<MattleGame v-if="topicClicked === true"/>
+		<MattleGame v-if="topicClicked === true" @victory="toggleVictoryModal"/>
 	</Transition>
+
+	<VictoryModal v-if="showVictory" :guessAttempts="guessAttempts" @close="toggleVictoryModal"/>
 
 </template>
 
 <script>
 import MattleHeader from './components/MattleHeader.vue'
 import MattleGame from '@/components/MattleGame.vue'
+import VictoryModal from '@/components/VictoryModal.vue'
 
 export default {
 	name: 'App',
 	components: {
 		MattleHeader,
-		MattleGame
+		MattleGame,
+        VictoryModal
 	},
 	data() {
 		return {
 			topicClicked: false,
+			showVictory: false,
+			guessAttempts: Number
 		}
 	},
 	methods: {
@@ -45,7 +51,13 @@ export default {
 			setTimeout(() => {
 				seal.classList.remove('seal-animation')
 			}, 500)
-		}
+		},
+		toggleVictoryModal(attempts) {
+			if(!this.showVictory) {
+				this.guessAttempts = attempts
+			}
+            this.showVictory = !this.showVictory
+        }	
 	}
 }
 </script>

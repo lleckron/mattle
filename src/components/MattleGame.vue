@@ -1,5 +1,4 @@
 <template>
-
     <div class="mattle-container">
 
         <MattleGuessInput :availableAnswersList="presidentsList" @submit="processGuess"/>
@@ -15,10 +14,7 @@
             </div>
 
         </div>
-
     </div>
-
-
 </template>
 
 <script>
@@ -32,7 +28,7 @@ export default {
     components: {
         MattleGuessInput,
         MattleCategories,
-        GuessRow
+        GuessRow,
     },
     data() {
         return {
@@ -41,7 +37,8 @@ export default {
             guessPresident: Object,
             guessedPresidents: [],
             guessStyleList: [],
-            guessCount: 0
+            guessCount: 0,
+            showVictory: false
         }
     },
     methods: {
@@ -51,11 +48,17 @@ export default {
         pickRandomPresident() {
             const random = Math.floor(Math.random() * this.presidentsList.length)
             this.answerPresident = this.presidentsList[random]
+            console.log(this.answerPresident)
         },
         processGuess(guess) {
             this.guessPresident = guess
             this.guessedPresidents.push(guess)
-        }
+            this.guessCount +=1
+            if(this.guessPresident === this.answerPresident) {
+                this.$emit('victory', this.guessCount)
+            }
+        },
+        
     },
     mounted() {
         this.populatePresidentsList()

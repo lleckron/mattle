@@ -21,8 +21,10 @@ export default ({
     data() {
         return {
             matchList: Array,
+            orderedMatchList: Array,
             selectedPresident: Object,
-            togglePresidentChoices: false
+            togglePresidentChoices: false,
+            currentInput: String
         }
     },
     methods: {
@@ -42,9 +44,12 @@ export default ({
             this.toggleOptionsOn()
             this.toggleSubmitOff()
             const input = document.getElementById('guess-input').value
+            this.currentInput = input
             const inputMatches = []
             if(input === "") {
                 this.matchList = []
+                this.orderedMatchList = []
+                this.currentInput = ''
             } else {
                 const regex = new RegExp(input,"i")
                 for(const president of this.availableAnswersList) {
@@ -54,8 +59,37 @@ export default ({
                         inputMatches.push(president)
                     }
                 }
-                this.matchList = inputMatches
+
+                let sortedMatches = this.sortInputMatches(inputMatches, this.currentInput)
+                this.matchList = sortedMatches
             }
+        },
+        sortInputMatches(inputMatches, input) {
+            inputMatches.sort(function(a,b) {
+                let inputLower = input.toLowerCase()
+                let aLower = a.name.toLowerCase()
+                let bLower = b.name.toLowerCase()
+
+                let aStartsWith = aLower.startsWith(inputLower)
+                let bStartsWith = bLower.startsWith(inputLower)
+
+                let aContainsInput = aLower.includes(inputLower)
+                let bContainsInput = bLower.includes(inputLower)
+
+                if (aStartsWith && !bStartsWith) {
+                    return -1
+                } else if (!aStartsWith && bStartsWith) {
+                    return 1
+                } else if (aContainsInput && !bContainsInput) {
+                    return -1
+                } else if (!aContainsInput && bContainsInput) {
+                    return 1
+                } else {
+                    return 0
+                }
+            })
+
+            return inputMatches
         },
         selectPresident(president) {
             const input = document.getElementById('guess-input')

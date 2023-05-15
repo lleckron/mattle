@@ -17,7 +17,7 @@
 	</TransitionGroup>
 
 	<Transition name="enter">
-		<MattleGame v-if="topicClicked === true" @victory="toggleVictoryModal"/>
+		<MattleGame v-if="topicClicked === true" />
 	</Transition>
 
 </template>
@@ -64,8 +64,8 @@ html {
 	max-height: 100vh;
 	font-family: 'Inter', sans-serif;
 	font-family: 'Kanit', sans-serif;
-	background-size: 400% 400%;
-	background-image: linear-gradient(-45deg,#95eccc,#ffffff,#888888,#f0f0f0);
+	background-size: 200% 800%;
+	background-image: linear-gradient(-45deg,#95eccc,#c7c7c7,#888888,#f0f0f0);
 	animation: gradient 15s linear infinite;
 }
 

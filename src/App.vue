@@ -20,27 +20,22 @@
 		<MattleGame v-if="topicClicked === true" @victory="toggleVictoryModal"/>
 	</Transition>
 
-	<VictoryModal v-if="showVictory" :guessAttempts="guessAttempts" @close="toggleVictoryModal"/>
-
 </template>
 
 <script>
 import MattleHeader from './components/MattleHeader.vue'
 import MattleGame from '@/components/MattleGame.vue'
-import VictoryModal from '@/components/VictoryModal.vue'
 
 export default {
 	name: 'App',
 	components: {
 		MattleHeader,
 		MattleGame,
-        VictoryModal
 	},
 	data() {
 		return {
 			topicClicked: false,
 			showVictory: false,
-			guessAttempts: Number
 		}
 	},
 	methods: {
@@ -51,13 +46,7 @@ export default {
 			setTimeout(() => {
 				seal.classList.remove('seal-animation')
 			}, 500)
-		},
-		toggleVictoryModal(attempts) {
-			if(!this.showVictory) {
-				this.guessAttempts = attempts
-			}
-            this.showVictory = !this.showVictory
-        }	
+		}
 	}
 }
 </script>
@@ -68,13 +57,25 @@ export default {
 html {
 	margin: 0;
 	padding: 0;
+	overflow: auto;
 	min-width: 100vw;
 	min-height: 100vh;
+	max-width: 100vw;
+	max-height: 100vh;
 	font-family: 'Inter', sans-serif;
 	font-family: 'Kanit', sans-serif;
 	background-size: 400% 400%;
 	background-image: linear-gradient(-45deg,#95eccc,#ffffff,#888888,#f0f0f0);
 	animation: gradient 15s linear infinite;
+}
+
+#app {
+	margin: 0;
+	padding: 0;
+	min-width: 100vw;
+	min-height: 100vh;
+	max-width: 100vw;
+	max-height: 100vh;
 }
 
 .description-container {

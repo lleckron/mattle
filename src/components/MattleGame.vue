@@ -14,6 +14,10 @@
             </div>
 
         </div>
+
+        <Transition name="victory">
+            <VictoryModal v-if="showVictory" :guessAttempts="guessCount" @close="setupNewGame"/>
+        </Transition>
     </div>
 </template>
 
@@ -22,6 +26,7 @@ import { createPresidents } from '@/models/PresidentList.js'
 import MattleGuessInput from '@/components/MattleGuessInput.vue'
 import MattleCategories from './MattleCategories.vue'
 import GuessRow from '@/components/GuessRow.vue'
+import VictoryModal from '@/components/VictoryModal.vue'
 
 export default {
     name: 'MattleGame',
@@ -29,6 +34,7 @@ export default {
         MattleGuessInput,
         MattleCategories,
         GuessRow,
+        VictoryModal
     },
     data() {
         return {
@@ -36,9 +42,8 @@ export default {
             answerPresident: Object,
             guessPresident: Object,
             guessedPresidents: [],
-            guessStyleList: [],
             guessCount: 0,
-            showVictory: false
+            showVictory: false,
         }
     },
     methods: {
@@ -48,16 +53,25 @@ export default {
         pickRandomPresident() {
             const random = Math.floor(Math.random() * this.presidentsList.length)
             this.answerPresident = this.presidentsList[random]
-            console.log(this.answerPresident)
         },
         processGuess(guess) {
             this.guessPresident = guess
             this.guessedPresidents.push(guess)
             this.guessCount +=1
             if(this.guessPresident === this.answerPresident) {
-                this.$emit('victory', this.guessCount)
+                this.showVictory = true
             }
         },
+		setupNewGame() {
+            this.showVictory = false
+
+            this.answerPresident = {}
+            this.guessPresident = {}
+            this.guessedPresidents = []
+            this.guessCount = 0
+
+            this.pickRandomPresident()
+        }	
         
     },
     mounted() {
@@ -91,6 +105,16 @@ export default {
 
 .fade-in-enter-from,
 .fade-in-leave-to {
+	opacity: 0;
+}
+
+.victory-enter-active,
+.victory-leave-active{
+    transition: opacity .15s ease-in;
+}
+
+.victory-enter-from,
+.victory-leave-to {
 	opacity: 0;
 }
 
